@@ -1,0 +1,308 @@
+/* ========================
+   table of contents
+===========================
+1. Main Structure
+2. Left Section ==> Buttons
+3. Right Section ==> Card
+4. Popup Styles
+5. Responsive Design (media query)
+*/
+
+/* Main Structure */
+main.flex {
+  gap: 2.64rem;
+  align-items: start;
+}
+
+/* ===============================
+   1. Left Section ==> Buttons
+================================== */
+main section.left-section.flex {
+  flex-direction: column;
+  gap: 10px;
+}
+
+main section.left-section.flex button {
+  background-color: rgba(36, 37, 46, 1);
+  width: 11rem;
+  padding: 0.75rem 0;
+  text-align: center;
+  font-size: 1.05rem;
+  text-transform: capitalize;
+  opacity: 0.5;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+main section.left-section.flex button:hover {
+  opacity: 1;
+}
+
+main section.left-section.flex button.active {
+  opacity: 1;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  padding: 0.8rem 0;
+  border: 1px solid var(--blue);
+}
+
+.light main section.left-section.flex button.active {
+  border: 1px solid #000;
+}
+
+/* ===============================
+   2. Right Section ==> Card
+================================== */
+main section.right-section.flex {
+  flex-grow: 1;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 2rem;
+}
+
+.card {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(93, 188, 252, 0.3);
+  border-radius: 5px;
+  transition: 0.3s;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.light .card,
+.light .card:hover {
+  border: none;
+}
+
+.card:hover {
+  border: 1px solid var(--blue);
+  rotate: 1deg;
+  scale: 1.01;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 400px;
+  object-fit: fill;
+  border-radius: 5px;
+}
+
+.card .box {
+  padding: 1rem 0.4rem;
+}
+
+.card .box .title {
+  color: var(--title);
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  color: #2c3e50; /* Darker color for title */
+}
+
+.card .box .sub-title {
+  color: #7f8c8d; /* Softer color for "about" text */
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.card .box .icons {
+  justify-content: space-between;
+}
+
+.card .icon-github,
+.card .icon-link {
+  font-size: 1.2rem;
+  color: var(--subtitle);
+}
+
+.card .icon-github:hover,
+.card .icon-link:hover {
+  font-size: 1.25rem;
+  color: var(--icon-hover);
+  cursor: pointer;
+}
+
+.card a.link {
+  font-size: 0.9rem;
+  color: var(--blue);
+  margin-right: 12px;
+}
+
+/* Card about text */
+.card .box .about {
+  width: 100%;
+  height: 60px; /* Fixed height for consistency across cards */
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit text to 3 lines */
+  -webkit-box-orient: vertical;
+  color: #7f8c8d; /* Matching "about" color in cards */
+}
+
+/* ===============================
+   4. Enhanced Popup Styles
+================================== */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh; /* Set max-height for responsiveness */
+  overflow-y: auto; /* Enable scrolling within popup if content is too long */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.popup-content img {
+  width: 100%;
+  max-width: 400px; /* Limit image size for better scaling */
+  height: auto;
+  border-radius: 10px;
+}
+
+.popup-text {
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+
+.popup-text h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.popup-text p {
+  font-size: 1rem;
+  color: #7f8c8d; /* Softer color for readability */
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.popup-content .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff5c5c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.popup-content .close-button:hover {
+  background-color: #ff1c1c;
+}
+
+.popup-content p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.popup-content a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.popup-content a:hover {
+  background-color: darken(var(--blue), 10%);
+}
+
+/* ===============================
+   5. Responsive Design (media query)
+================================== */
+
+@media (max-width: 768px) {
+  .popup-body {
+    flex-direction: column;
+  }
+  .popup-content img, .popup-text {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  main.flex {
+    flex-direction: column;
+    gap: 2.64rem;
+    align-items: center;
+  }
+
+  main section.left-section.flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  main section.left-section.flex button {
+    width: 7rem;
+    padding: 0.8rem 0;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    padding: 15px;
+    max-height: 80vh; /* Further reduce max height for very small screens */
+  }
+
+  .popup-content .close-button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .popup-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .popup-content p {
+    font-size: 0.9rem;
+  }
+}
