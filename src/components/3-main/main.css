@@ -279,6 +279,7 @@ main section.right-section.flex {
     justify-content: center;
     gap: 10px;
   }
+  
 
   main section.left-section.flex button {
     width: 7rem;
